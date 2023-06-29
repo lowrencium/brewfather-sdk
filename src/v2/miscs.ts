@@ -11,10 +11,10 @@ type GetMiscsOptions = GetAllOptions & {
 
 type IncompleteMisc = Pick<Misc, '_id' | 'inventory' | 'name' | 'type' | 'use'>;
 
-export default class extends Apply<
-  GetAll<Misc, IncompleteMisc, GetMiscsOptions>,
-  GetById<Misc, IncompleteMisc>
->(GetAllMixin, GetByIdMixin) {
+export default class extends Apply<GetAll<Misc, IncompleteMisc, GetMiscsOptions>, GetById<Misc, IncompleteMisc>>(
+  GetAllMixin,
+  GetByIdMixin
+) {
   constructor(axios: AxiosInstance) {
     super(axios, '/inventory/miscs');
   }

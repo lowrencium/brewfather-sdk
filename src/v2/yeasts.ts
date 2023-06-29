@@ -11,10 +11,10 @@ type GetYeastsOptions = GetAllOptions & {
 
 type IncompleteYeast = Pick<Yeast, '_id' | 'attenuation' | 'inventory' | 'name' | 'type'>;
 
-export default class extends Apply<
-  GetAll<Yeast, IncompleteYeast, GetYeastsOptions>,
-  GetById<Yeast, IncompleteYeast>
->(GetAllMixin, GetByIdMixin) {
+export default class extends Apply<GetAll<Yeast, IncompleteYeast, GetYeastsOptions>, GetById<Yeast, IncompleteYeast>>(
+  GetAllMixin,
+  GetByIdMixin
+) {
   constructor(axios: AxiosInstance) {
     super(axios, '/inventory/yeasts');
   }

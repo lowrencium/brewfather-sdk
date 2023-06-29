@@ -9,10 +9,7 @@ type GetFermentablesOptions = GetAllOptions & {
   inventory_exists?: boolean;
 };
 
-type IncompleteFermentable = Pick<
-  Fermentable,
-  '_id' | 'attenuation' | 'inventory' | 'name' | 'supplier' | 'type' | 'use'
->;
+type IncompleteFermentable = Pick<Fermentable, '_id' | 'attenuation' | 'inventory' | 'name' | 'supplier' | 'type' | 'use'>;
 
 export default class extends Apply<
   GetAll<Fermentable, IncompleteFermentable, GetFermentablesOptions>,

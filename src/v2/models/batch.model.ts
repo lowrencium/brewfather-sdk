@@ -5,13 +5,7 @@ import { Style } from './style.model';
 import { Misc } from './misc.model';
 import { Yeast } from './yeast.model';
 
-export type BatchStatus =
-  | 'Planning'
-  | 'Brewing'
-  | 'Fermenting'
-  | 'Conditioning'
-  | 'Completed'
-  | 'Archived';
+export type BatchStatus = 'Planning' | 'Brewing' | 'Fermenting' | 'Conditioning' | 'Completed' | 'Archived';
 
 export interface Batch {
   batchNo: number;

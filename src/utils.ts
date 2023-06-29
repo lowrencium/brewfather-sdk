@@ -6,17 +6,11 @@ export class BaseClass {
   constructor(protected readonly axios: AxiosInstance, protected readonly route: string) {}
 }
 
-export type Mixin<Base> = <Target extends Constructor>(
-  target: Target
-) => Constructor<Base> & Target;
+export type Mixin<Base> = <Target extends Constructor>(target: Target) => Constructor<Base> & Target;
 
 export function Apply<A, B>(...mixins: [Mixin<A>, Mixin<B>]): Constructor<A & B> & BaseClass;
-export function Apply<A, B, C>(
-  ...mixins: [Mixin<A>, Mixin<B>, Mixin<C>]
-): Constructor<A & B & C> & BaseClass;
-export function Apply<A, B, C, D>(
-  ...mixins: [Mixin<A>, Mixin<B>, Mixin<C>, Mixin<D>]
-): Constructor<A & B & C & D> & BaseClass;
+export function Apply<A, B, C>(...mixins: [Mixin<A>, Mixin<B>, Mixin<C>]): Constructor<A & B & C> & BaseClass;
+export function Apply<A, B, C, D>(...mixins: [Mixin<A>, Mixin<B>, Mixin<C>, Mixin<D>]): Constructor<A & B & C & D> & BaseClass;
 export function Apply<A, B, C, D, E>(
   ...mixins: [Mixin<A>, Mixin<B>, Mixin<C>, Mixin<D>, Mixin<E>]
 ): Constructor<A & B & C & D & E> & BaseClass;

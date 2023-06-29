@@ -4,10 +4,7 @@ import { AxiosInstance } from 'axios';
 export interface GetById<Object, Incomplete = Object> {
   getById(id: string): Promise<Object>;
 
-  getById<T extends keyof Object>(
-    id: string,
-    includes: Array<T>
-  ): Promise<Incomplete & Pick<Object, T>>;
+  getById<T extends keyof Object>(id: string, includes: Array<T>): Promise<Incomplete & Pick<Object, T>>;
 }
 
 export const GetByIdMixin: Mixin<GetById<any>> = <Object, Incomplete, Target extends Constructor>(
@@ -22,10 +19,7 @@ export const GetByIdMixin: Mixin<GetById<any>> = <Object, Incomplete, Target ext
     }
 
     getById(id: string): Promise<Object>;
-    getById<T extends keyof Object>(
-      id: string,
-      includes: Array<T>
-    ): Promise<Incomplete & Pick<Object, T>>;
+    getById<T extends keyof Object>(id: string, includes: Array<T>): Promise<Incomplete & Pick<Object, T>>;
     getById(id: string, includes?: Array<keyof Object>): Promise<Object> {
       const params: any = {};
       if (Array.isArray(includes)) {

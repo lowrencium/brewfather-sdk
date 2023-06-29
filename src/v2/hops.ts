@@ -11,10 +11,7 @@ type GetHopsOptions = GetAllOptions & {
 
 type IncompleteHop = Pick<Hop, '_id' | 'alpha' | 'inventory' | 'name' | 'type' | 'use'>;
 
-export default class extends Apply<
-  GetAll<Hop, IncompleteHop, GetHopsOptions>,
-  GetById<Hop, IncompleteHop>
->(GetAllMixin, GetByIdMixin) {
+export default class extends Apply<GetAll<Hop, IncompleteHop, GetHopsOptions>, GetById<Hop, IncompleteHop>>(GetAllMixin, GetByIdMixin) {
   constructor(axios: AxiosInstance) {
     super(axios, '/inventory/hops');
   }

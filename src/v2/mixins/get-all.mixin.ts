@@ -2,11 +2,7 @@ import { Constructor, Mixin } from '../../utils';
 import { GetAllOptions } from '../types';
 import { AxiosInstance } from 'axios/index';
 
-export interface GetAll<
-  Object extends object,
-  Incomplete = Object,
-  Options extends GetAllOptions = GetAllOptions
-> {
+export interface GetAll<Object extends object, Incomplete = Object, Options extends GetAllOptions = GetAllOptions> {
   getAll(options?: Options): Promise<Incomplete[]>;
 
   getAll(complete: true, options?: Options): Promise<Object[]>;
@@ -47,11 +43,7 @@ export const GetAllMixin: Mixin<GetAll<any>> = <
       options?: Options
     ): Promise<(Object | Incomplete)[]> {
       options = (
-        typeof completeOrOptions === 'boolean'
-          ? Array.isArray(includesOrOptions)
-            ? options
-            : includesOrOptions
-          : completeOrOptions
+        typeof completeOrOptions === 'boolean' ? (Array.isArray(includesOrOptions) ? options : includesOrOptions) : completeOrOptions
       ) as Options;
 
       const params: any = options ?? {};
