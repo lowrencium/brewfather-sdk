@@ -37,7 +37,7 @@ export default class BrewfatherV2Client {
       fermentables: new FermentablesController(this.axios),
       hops: new HopsController(this.axios),
       miscs: new MiscsController(this.axios),
-      yeasts: new YeastsController(this.axios,
+      yeasts: new YeastsController(this.axios)
     };
   }
 }
