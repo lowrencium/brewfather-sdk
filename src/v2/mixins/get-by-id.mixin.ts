@@ -1,16 +1,16 @@
 import { Constructor, Mixin } from '../../utils';
 import { AxiosInstance } from 'axios';
 
-export interface GetById<Object, Incomplete = Object> {
+export interface GetById<Object extends object, Incomplete = Object> {
   getById(id: string): Promise<Object>;
 
   getById<T extends keyof Object>(id: string, includes: Array<T>): Promise<Incomplete & Pick<Object, T>>;
 }
 
-export const GetByIdMixin: Mixin<GetById<any>> = <Object, Incomplete, Target extends Constructor>(
+export const GetByIdMixin: Mixin<GetById<any>> = <Object extends object, Incomplete, Target extends Constructor>(
   target: Target
 ): Constructor<GetById<Object, Incomplete>> & Target => {
-  return class extends target {
+  return class extends target implements GetById<Object, Incomplete> {
     axios!: AxiosInstance;
     route!: string;
 

@@ -1,4 +1,5 @@
 export * from './batch.model';
+export * from './brewtracker.model';
 export * from './fermentable.model';
 export * from './hop.model';
 export * from './misc.model';

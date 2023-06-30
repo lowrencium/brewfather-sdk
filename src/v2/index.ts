@@ -1,21 +1,25 @@
-import axios, { AxiosInstance } from 'axios';
-import { API_URL_V2 } from '../constants';
-import Recipes from './recipes';
-import Fermentables from './fermentables';
-import Hops from './hops';
-import Miscs from './miscs';
-import Yeasts from './yeasts';
-import Batches from './batches';
+import axios, { AxiosInstance } from "axios";
+import { API_URL_V2 } from "../constants";
+import {
+  BatchesController,
+  FermentablesController,
+  HopsController,
+  MiscsController,
+  RecipesController,
+  YeastsController
+} from "./controllers";
 
 export default class BrewfatherV2Client {
   protected axios!: AxiosInstance;
 
-  public readonly recipes!: Recipes;
-  public readonly fermentables!: Fermentables;
-  public readonly hops!: Hops;
-  public readonly miscs!: Miscs;
-  public readonly yeasts!: Yeasts;
-  public readonly batches!: Batches;
+  public readonly recipes!: RecipesController;
+  public readonly batches!: BatchesController;
+  public readonly inventory!: {
+    fermentables: FermentablesController;
+    hops: HopsController;
+    miscs: MiscsController;
+    yeasts: YeastsController;
+  };
 
   constructor(userId: string, apiKey: string) {
     this.axios = axios.create({
@@ -23,15 +27,17 @@ export default class BrewfatherV2Client {
       withCredentials: true,
       auth: {
         username: userId,
-        password: apiKey,
-      },
+        password: apiKe,
+      ,
     });
 
-    this.recipes = new Recipes(this.axios);
-    this.fermentables = new Fermentables(this.axios);
-    this.hops = new Hops(this.axios);
-    this.miscs = new Miscs(this.axios);
-    this.yeasts = new Yeasts(this.axios);
-    this.batches = new Batches(this.axios);
+    this.recipes = new RecipesController(this.axios);
+    this.batches = new BatchesController(this.axios);
+    this.inventory = {
+      fermentables: new FermentablesController(this.axios),
+      hops: new HopsController(this.axios),
+      miscs: new MiscsController(this.axios),
+      yeasts: new YeastsController(this.axios,
+    };
   }
 }

@@ -1,6 +1,6 @@
 import { Constructor, Mixin } from '../../utils';
 import { GetAllOptions } from '../types';
-import { AxiosInstance } from 'axios/index';
+import { AxiosInstance } from 'axios';
 
 export interface GetAll<Object extends object, Incomplete = Object, Options extends GetAllOptions = GetAllOptions> {
   getAll(options?: Options): Promise<Incomplete[]>;
@@ -22,7 +22,7 @@ export const GetAllMixin: Mixin<GetAll<any>> = <
 >(
   target: Target
 ): Constructor<GetAll<Object, Incomplete, Options>> & Target => {
-  return class extends target {
+  return class extends target implements GetAll<Object, Incomplete, Options> {
     axios!: AxiosInstance;
     route!: string;
 
