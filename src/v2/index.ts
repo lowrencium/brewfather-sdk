@@ -1,13 +1,13 @@
-import axios, { AxiosInstance } from "axios";
-import { API_URL_V2 } from "../constants";
+import axios, { AxiosInstance } from 'axios';
+import { API_URL_V2 } from '../constants';
 import {
   BatchesController,
   FermentablesController,
   HopsController,
   MiscsController,
   RecipesController,
-  YeastsController
-} from "./controllers";
+  YeastsController,
+} from './controllers';
 
 export default class BrewfatherV2Client {
   protected axios!: AxiosInstance;
@@ -27,8 +27,8 @@ export default class BrewfatherV2Client {
       withCredentials: true,
       auth: {
         username: userId,
-        password: apiKe,
-      ,
+        password: apiKey,
+      },
     });
 
     this.recipes = new RecipesController(this.axios);
@@ -37,7 +37,7 @@ export default class BrewfatherV2Client {
       fermentables: new FermentablesController(this.axios),
       hops: new HopsController(this.axios),
       miscs: new MiscsController(this.axios),
-      yeasts: new YeastsController(this.axios)
+      yeasts: new YeastsController(this.axios),
     };
   }
 }
