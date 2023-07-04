@@ -5,7 +5,7 @@ import { GetAll, GetAllMixin, GetById, GetByIdMixin, Update, UpdateMixin } from 
 import { GetAllOptions } from '../types';
 
 type GetBatchesOptions = GetAllOptions & {
-  status: BatchStatus;
+  status?: BatchStatus;
 };
 
 type IncompleteBatch = Pick<Batch, '_id' | 'batchNo' | 'brewDate' | 'brewer' | 'name' | 'recipe' | 'status'>;
