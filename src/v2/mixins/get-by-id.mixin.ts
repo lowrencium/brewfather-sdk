@@ -2,8 +2,17 @@ import { Constructor, Mixin } from '../../utils';
 import { AxiosInstance } from 'axios';
 
 export interface GetById<Object extends object, Incomplete = Object> {
+  /**
+   *
+   * @param id Item identifier
+   */
   getById(id: string): Promise<Object>;
 
+  /**
+   *
+   * @param id Item identifier
+   * @param includes Fields to include. Default fields are included in addition of the requested fields.
+   */
   getById<T extends keyof Object>(id: string, includes: Array<T>): Promise<Incomplete & Pick<Object, T>>;
 }
 

@@ -4,7 +4,7 @@ import { Apply } from '../../utils';
 import { GetAll, GetAllMixin, GetById, GetByIdMixin, Update, UpdateMixin } from '../mixins';
 import { GetAllOptions } from '../types';
 
-type GetBatchesOptions = GetAllOptions & {
+type GetBatchesOptions = GetAllOptions<Batch> & {
   status?: BatchStatus;
 };
 
@@ -12,17 +12,72 @@ type IncompleteBatch = Pick<Batch, '_id' | 'batchNo' | 'brewDate' | 'brewer' | '
 
 type UpdateBatchParams = {
   status: BatchStatus;
-  measuredBatchPh: number;
+
+  /**
+   * Numeric value between 0 and 14
+   */
+  measuredMashPh: number;
+
+  /**
+   * Pre-Boil volume, in liters
+   */
   measuredBoilSize: number;
+
+  /**
+   * Pre-Sparge gravity, in SG
+   * @example 1.055
+   */
   measuredFirstWortGravity: number;
+
+  /**
+   * Pre-Boil gravity, in SG
+   * @example 1.055
+   */
   measuredPreBoilGravity: number;
+
+  /**
+   * Post-Boil gravity, in SG
+   * @example 1.055
+   */
   measuredPostBoilGravity: number;
+
+  /**
+   * Post-Boild volume, in liters
+   */
   measuredKettleSize: number;
+
+  /**
+   * Original gravity, in SG
+   * @example 1.055
+   */
   measuredOg: number;
+
+  /**
+   * Final gravity, in SG
+   * @example 1.011
+   */
   measuredFg: number;
+
+  /**
+   * Fermenter Top-Up, in liters
+   */
   measuredFermenterTopUp: number;
+
+  /**
+   * Fermenter volume, in liters
+   */
   measuredBatchSize: number;
+
+  /**
+   * Final bottling/kegging volume, in liters
+   */
   measuredBottlingSize: number;
+
+  /**
+   * Value in Celcius (°C)
+   * Min -50°C
+   * Max 100°C
+   */
   carbonationTemp: number;
 };
 

@@ -2,18 +2,12 @@ import { AxiosInstance } from 'axios';
 import { Misc } from '../../models';
 import { Apply } from '../../../utils';
 import { GetAll, GetAllMixin, GetById, GetByIdMixin, Update, UpdateMixin } from '../../mixins';
-import { GetAllOptions } from '../../types';
-import { UpdateInventoryParams } from './types';
-
-type GetMiscsOptions = GetAllOptions & {
-  inventory_negative?: boolean;
-  inventory_exists?: boolean;
-};
+import { GetAllInventoryOptions, UpdateInventoryParams } from './types';
 
 type IncompleteMisc = Pick<Misc, '_id' | 'inventory' | 'name' | 'type' | 'use'>;
 
 export class MiscsController extends Apply<
-  GetAll<Misc, IncompleteMisc, GetMiscsOptions>,
+  GetAll<Misc, IncompleteMisc, GetAllInventoryOptions<Misc>>,
   GetById<Misc, IncompleteMisc>,
   Update<Misc, UpdateInventoryParams>
 >(GetAllMixin, GetByIdMixin, UpdateMixin) {

@@ -2,11 +2,22 @@ import { Constructor, Mixin } from '../../utils';
 import { GetAllOptions } from '../types';
 import { AxiosInstance } from 'axios';
 
-export interface GetAll<Object extends object, Incomplete = Object, Options extends GetAllOptions = GetAllOptions> {
+export interface GetAll<Object extends object, Incomplete = Object, Options extends GetAllOptions<Object> = GetAllOptions<Object>> {
   getAll(options?: Options): Promise<Incomplete[]>;
 
+  /**
+   *
+   * @param complete Includes all the data in the result if `true`
+   * @param options
+   */
   getAll(complete: true, options?: Options): Promise<Object[]>;
 
+  /**
+   *
+   * @param complete Includes all the data in the result if `true`
+   * @param includes Fields to include. Default fields are included in addition of the requested fields.
+   * @param options
+   */
   getAll<Keys extends keyof Object>(
     complete: false,
     includes: Array<Keys>,
@@ -17,7 +28,7 @@ export interface GetAll<Object extends object, Incomplete = Object, Options exte
 export const GetAllMixin: Mixin<GetAll<any>> = <
   Object extends object,
   Incomplete = Object,
-  Options extends GetAllOptions = GetAllOptions,
+  Options extends GetAllOptions<Object> = GetAllOptions<Object>,
   Target extends Constructor = Constructor
 >(
   target: Target
