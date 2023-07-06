@@ -1,5 +1,5 @@
-import BrewfatherV2Client from './src/v2';
+import * as BrewfatherV2 from './src/v2';
 
 declare var module: any;
-module.exports = { BrewfatherV2Client };
-export { BrewfatherV2Client };
+module.exports = { ...BrewfatherV2 };
+export * from './src/v2';

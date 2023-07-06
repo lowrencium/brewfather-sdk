@@ -9,7 +9,8 @@ import {
   YeastsController,
 } from './controllers';
 
-export default class BrewfatherV2Client {
+export * from './models';
+export class BrewfatherV2Client {
   protected axios!: AxiosInstance;
 
   public readonly recipes!: RecipesController;
