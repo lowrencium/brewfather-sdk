@@ -27,4 +27,11 @@ export interface Yeast {
   laboratory: string;
   name: string;
   maxAbv: number;
+  fermentAll: boolean;
+  manufacturingDate: number;
+  starterSize: number;
+  userNotes: string;
+  starter: boolean;
+  bestBeforeDate: number;
+  amount: number;
 }

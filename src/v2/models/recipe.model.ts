@@ -367,9 +367,20 @@ interface Units {
 }
 
 interface Fermentation {
-  steps: any[][];
-  name: 'Ale';
-  _id: 'default';
+  steps: FermentationStep[];
+  name: string;
+  _id: string;
+}
+
+interface FermentationStep {
+  actualTime: number;
+  displayPressure: number;
+  displayStepTemp: number;
+  presure: number;
+  ramp: number;
+  stepTemp: number;
+  stepTime: number;
+  type: string;
 }
 
 interface Mash {
